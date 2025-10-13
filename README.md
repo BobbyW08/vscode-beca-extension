@@ -1,275 +1,267 @@
 # BECA VS Code Extension
 
-🤖 **Badass Expert Coding Agent** - Your AI-powered coding companion directly in VS Code!
+**Badass Expert Coding Agent** - Your AI-powered coding assistant directly in VS Code.
 
-BECA is an intelligent VS Code extension that brings the power of AI-assisted development directly into your editor. Powered by Ollama and running on your infrastructure, BECA provides context-aware code suggestions, analysis, debugging assistance, and more.
+## Features
 
-## ✨ Features
+BECA integrates seamlessly with VS Code to provide intelligent code assistance, analysis, and generation capabilities powered by AI.
 
-### 🎯 Core Capabilities
+### Core Features
 
-- **Ask BECA Anything** (`Ctrl+Shift+B`): Chat with BECA about code, get explanations, or request help with any programming task
-- **Intelligent Code Analysis**: Right-click on any code selection to get instant analysis and insights
-- **File Review**: Get comprehensive code quality reviews for entire files
-- **Smart Refactoring**: Receive AI-powered suggestions for improving your code
-- **Error Detection & Fixes**: Automatic error detection with fix suggestions
-- **Test Generation**: Generate unit tests for your code automatically
-- **Code Documentation**: Add comprehensive comments and docstrings
+- 🤖 **Interactive Chat**: Chat with BECA directly in the sidebar
+- 🔍 **Code Analysis**: Analyze selected code with context-aware insights
+- 📝 **Code Review**: Automated file review with suggestions
+- 💡 **Code Explanation**: Get detailed explanations of complex code
+- 🐛 **Error Fixing**: AI-powered error detection and fixes
+- ✅ **Test Generation**: Automatically generate unit tests
+- 🔄 **Refactoring**: Smart refactoring suggestions
+- 💬 **Auto Comments**: Generate meaningful code comments
+- 📚 **Conversation History**: Track all interactions with BECA
+- 🎯 **Hover Tooltips**: Get insights by hovering over code
+- ⚡ **Real-time Suggestions**: Inline code suggestions as you type
+- 🔧 **Debug Assistant**: Stack trace analysis and fix suggestions
 
-### 🔍 Inline Features
+## Installation
 
-- **Hover Tooltips**: Hover over code to get instant BECA insights
-- **Code Completion**: Intelligent code suggestions as you type
-- **Real-time Diagnostics**: Continuous code analysis with inline warnings and suggestions
-- **Context-Aware Help**: BECA understands your project context
+1. **Install the Extension**:
+   ```bash
+   code --install-extension beca-vscode-1.0.0.vsix
+   ```
 
-### 🛠️ Advanced Features
+2. **Ensure BECA Backend is Running**:
+   - BECA must be running at `http://127.0.0.1:7862`
+   - Default configuration connects to Google Cloud Compute Engine instance
 
-- **Auto-Review on Save**: Optionally review files automatically when you save
-- **Debug Assistant**: Automatic error analysis during debugging sessions
-- **Terminal Integration**: Execute commands through BECA's intelligent terminal
-- **Conversation History**: Access previous conversations with BECA
-- **Sidebar Chat**: Dedicated chat panel for ongoing conversations
+3. **Reload VS Code**:
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
+   - Type "Reload Window" and press Enter
 
-## 📦 Installation
+## Quick Start
 
-### Prerequisites
+### Keyboard Shortcuts
 
-1. **BECA Backend Running**: Ensure BECA is running (typically at `http://localhost:7860`)
-2. **VS Code**: Version 1.85.0 or higher
+- `Ctrl+Shift+B` (Mac: `Cmd+Shift+B`) - Ask BECA anything
+- `Ctrl+Shift+A` (Mac: `Cmd+Shift+A`) - Analyze selected code
 
-### Install Extension
+### Commands
 
-1. Open VS Code
-2. Go to Extensions (`Ctrl+Shift+X`)
-3. Search for "BECA"
-4. Click Install
+Access all BECA commands via the Command Palette (`Ctrl+Shift+P`):
 
-Or install from VSIX:
-```bash
-code --install-extension beca-vscode-1.0.0.vsix
-```
+- **BECA: Ask BECA** - Start a conversation with BECA
+- **BECA: Analyze This Code** - Analyze selected code
+- **BECA: Review Current File** - Get a comprehensive file review
+- **BECA: Explain This Code** - Get detailed code explanation
+- **BECA: Fix This Error** - Get help fixing errors
+- **BECA: Generate Tests** - Generate unit tests for selected code
+- **BECA: Suggest Refactoring** - Get refactoring suggestions
+- **BECA: Add Comments** - Automatically add meaningful comments
+- **BECA: Show Conversation History** - View past interactions
+- **BECA: Toggle Auto-Review on Save** - Enable/disable automatic reviews
+- **BECA: Show Status** - Check BECA connection status
 
-## ⚙️ Configuration
+### Context Menu
+
+Right-click in the editor to access BECA commands:
+- **BECA: Analyze This Code** (when text is selected)
+- **BECA: Explain This Code** (when text is selected)
+- **BECA: Suggest Refactoring** (when text is selected)
+- **BECA: Fix This Error** (in any file)
+
+### Sidebar
+
+Click the BECA icon in the Activity Bar to access:
+- **Chat with BECA** - Interactive chat interface
+- **Conversation History** - Browse past conversations
+- **Code Insights** - View accumulated insights from BECA
+
+## Configuration
 
 Access settings via `File > Preferences > Settings` and search for "BECA":
 
-### Essential Settings
+### Available Settings
 
-- **`beca.apiUrl`**: BECA Gradio API URL (default: `http://localhost:7860`)
-  ```json
-  "beca.apiUrl": "http://localhost:7860"
-  ```
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `beca.apiUrl` | string | `http://127.0.0.1:7862` | URL of the BECA backend API |
+| `beca.autoReview` | boolean | `false` | Automatically review files on save |
+| `beca.showInlineHints` | boolean | `true` | Show inline code hints and suggestions |
+| `beca.enableHoverTooltips` | boolean | `true` | Show BECA insights on hover |
+| `beca.debugAssistant` | boolean | `true` | Enable debug assistant for error analysis |
+| `beca.terminalIntegration` | boolean | `true` | Enable terminal integration |
+| `beca.suggestionDelay` | number | `2000` | Delay (ms) before showing suggestions |
+| `beca.maxSuggestions` | number | `3` | Maximum number of suggestions to show |
 
-### Feature Toggles
+### Example Configuration
 
-- **`beca.autoReview`**: Automatically review files on save (default: `false`)
-- **`beca.showInlineHints`**: Show inline code suggestions (default: `true`)
-- **`beca.enableHoverTooltips`**: Show BECA insights on hover (default: `true`)
-- **`beca.debugAssistant`**: Enable debug assistant (default: `true`)
-- **`beca.terminalIntegration`**: Enable terminal integration (default: `true`)
-
-### Performance Settings
-
-- **`beca.suggestionDelay`**: Delay before showing suggestions in ms (default: `2000`)
-- **`beca.maxSuggestions`**: Maximum suggestions to show (default: `3`)
-
-## 🚀 Usage
-
-### Quick Start
-
-1. **Start BECA Backend**:
-   ```bash
-   cd C:\dev
-   .\.venv\Scripts\Activate.ps1
-   python beca_gui.py
-   ```
-
-2. **Open VS Code** and the extension will auto-connect
-
-3. **Try These Commands**:
-   - Press `Ctrl+Shift+B` to ask BECA anything
-   - Right-click code → "BECA: Analyze This Code"
-   - Click BECA icon in sidebar for chat interface
-
-### Common Workflows
-
-#### 1. Code Review
-```
-1. Open a file
-2. Click the checklist icon in title bar
-3. View BECA's comprehensive review
+```json
+{
+  "beca.apiUrl": "http://127.0.0.1:7862",
+  "beca.autoReview": true,
+  "beca.showInlineHints": true,
+  "beca.enableHoverTooltips": true,
+  "beca.debugAssistant": true,
+  "beca.suggestionDelay": 1500,
+  "beca.maxSuggestions": 5
+}
 ```
 
-#### 2. Debug Assistance
-```
-1. Start debugging session
-2. When error occurs, BECA offers to analyze
-3. View detailed error analysis and fixes
-```
+## Usage Examples
 
-#### 3. Quick Code Help
-```
-1. Select code snippet
-2. Right-click → "BECA: Explain This Code"
-3. Get instant explanation
-```
+### Example 1: Analyzing Code
 
-#### 4. Generate Tests
-```
-1. Select function/class
-2. Command Palette → "BECA: Generate Tests"
-3. Review and save generated tests
-```
+1. Select a block of code
+2. Right-click and choose "BECA: Analyze This Code"
+3. Review BECA's analysis in the output panel
 
-## 🎨 Interface
+### Example 2: Getting Help with Errors
 
-### Status Bar
-- Shows BECA connection status
-- Click for detailed status information
-- Animates when BECA is working
+1. When you encounter an error, place cursor on the error line
+2. Press `Ctrl+Shift+P` and type "BECA: Fix This Error"
+3. BECA will analyze the error and suggest fixes
 
-### Sidebar Panel
-Three views:
-- **Chat**: Interactive conversation with BECA
-- **History**: Previous conversations
-- **Insights**: Code tips and suggestions
+### Example 3: Generating Tests
 
-### Context Menu
-Right-click on code for:
-- Analyze Code
-- Explain Code  
-- Suggest Refactoring
-- Fix Error
+1. Select a function or class
+2. Right-click and choose "BECA: Generate Tests"
+3. BECA will generate comprehensive unit tests
 
-## 🔧 Commands
+### Example 4: Code Review
 
-Access via Command Palette (`Ctrl+Shift+P`):
+1. Open a file you want reviewed
+2. Press `Ctrl+Shift+P` and type "BECA: Review Current File"
+3. BECA will provide a detailed review with suggestions
 
-| Command | Shortcut | Description |
-|---------|----------|-------------|
-| BECA: Ask BECA | `Ctrl+Shift+B` | Open chat dialog |
-| BECA: Analyze This Code | `Ctrl+Shift+A` | Analyze selected code |
-| BECA: Review Current File | - | Full file review |
-| BECA: Explain This Code | - | Get code explanation |
-| BECA: Fix This Error | - | Get error fix suggestions |
-| BECA: Generate Tests | - | Create unit tests |
-| BECA: Suggest Refactoring | - | Get refactoring ideas |
-| BECA: Add Comments | - | Add documentation |
-| BECA: Show History | - | View conversation history |
-| BECA: Toggle Auto-Review | - | Enable/disable auto-review |
-| BECA: Show Status | - | Display connection status |
+## Troubleshooting
 
-## 🏗️ Architecture
+### Extension Not Activating
+
+1. Check if BECA backend is running: `curl http://127.0.0.1:7862`
+2. Verify the API URL in settings matches your BECA instance
+3. Check the Output panel (View > Output) and select "BECA" from dropdown
+4. Reload VS Code: `Ctrl+Shift+P` > "Reload Window"
+
+### Commands Not Found
+
+1. Ensure the extension is installed: Check Extensions panel
+2. Reload VS Code window
+3. Check if there are any error messages in the Output panel
+
+### Connection Errors
+
+1. Verify BECA is accessible: `curl http://127.0.0.1:7862`
+2. Check firewall settings
+3. Ensure correct API URL in settings
+4. Try running: `BECA: Show Status` to check connection
+
+For detailed troubleshooting, see [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
+
+## Architecture
 
 ```
-Extension Structure:
-├── extension.js          # Main activation
-├── beca-client.js        # API communication
-├── commands/             # Command handlers
+┌─────────────────┐
+│   VS Code       │
+│   Extension     │
+└────────┬────────┘
+         │
+         │ HTTP API
+         ▼
+┌─────────────────┐
+│  BECA Backend   │
+│  (Gradio API)   │
+└────────┬────────┘
+         │
+         │ Ollama API
+         ▼
+┌─────────────────┐
+│  Ollama LLM     │
+│  (deepseek)     │
+└─────────────────┘
+```
+
+## Development
+
+### Building from Source
+
+```bash
+# Navigate to extension directory
+cd vscode-beca-extension
+
+# Install dependencies
+npm install
+
+# Package the extension
+vsce package
+
+# Install the packaged extension
+code --install-extension beca-vscode-1.0.0.vsix --force
+```
+
+### Project Structure
+
+```
+vscode-beca-extension/
+├── package.json              # Extension manifest
+├── extension.js              # Main activation code
+├── beca-client.js           # BECA API client
+├── commands/
+│   ├── index.js             # Command implementations
 │   ├── askBeca.js
 │   ├── analyzeCode.js
 │   └── reviewFile.js
-├── providers/            # Language features
-│   ├── hoverProvider.js
-│   ├── completionProvider.js
-│   └── diagnosticProvider.js
-├── views/                # UI components
-│   ├── statusBar.js
-│   └── sidebar.js
-├── watchers/             # File monitoring
-│   └── fileWatcher.js
-├── assistants/           # Smart features
-│   └── debugAssistant.js
-└── terminal/             # Terminal integration
-    └── terminalIntegration.js
+├── providers/
+│   ├── hoverProvider.js     # Hover tooltip provider
+│   ├── completionProvider.js # Code completion provider
+│   ├── diagnosticProvider.js # Error diagnostics
+│   └── fileWatcher.js       # File change monitoring
+└── views/
+    ├── statusBar.js         # Status bar integration
+    ├── sidebar.js           # Sidebar view provider
+    └── chatPanel.js         # Chat webview panel
 ```
 
-## 🔒 Privacy & Security
+## Future Architecture (Planned)
 
-- **Local-First**: All processing happens through your BECA instance
-- **No External APIs**: No data sent to third parties
-- **Your Infrastructure**: Runs on your Google Cloud GPU
-- **Code Privacy**: Your code stays on your machine
+Direct communication with Ollama for improved performance:
 
-## 🐛 Troubleshooting
-
-### Connection Issues
-
-**Problem**: "Cannot connect to BECA"
 ```
-Solutions:
-1. Check BECA is running: http://localhost:7860
-2. Verify API URL in settings
-3. Check firewall/network settings
-```
+┌─────────────────┐
+│   VS Code       │
+│   Extension     │
+└────────┬────────┘
+         │
+         │ Direct Ollama API
+         ▼
+┌─────────────────┐
+│  Ollama LLM     │
+│  (deepseek)     │
+└─────────────────┘
 
-### Performance Issues
-
-**Problem**: Slow suggestions
-```
-Solutions:
-1. Increase suggestionDelay in settings
-2. Reduce maxSuggestions
-3. Disable hover tooltips if not needed
+BECA GUI → Monitoring & Learning Logs Only
 ```
 
-### Auto-Review Not Working
+## Contributing
 
-**Problem**: Files not auto-reviewed on save
-```
-Solutions:
-1. Check beca.autoReview is enabled
-2. Ensure file is a supported code language
-3. Check BECA backend is responsive
-```
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-## 💡 Tips & Tricks
+## Support
 
-1. **Select Context**: Select relevant code before asking questions for better context
-2. **Use Keyboard Shortcuts**: `Ctrl+Shift+B` for quick access
-3. **Review History**: Check conversation history for past solutions
-4. **Customize Keybindings**: Modify shortcuts in Keyboard Shortcuts settings
-5. **Disable Features**: Turn off unused features for better performance
+- **Repository**: https://github.com/BobbyW08/BECA-clone
+- **Issues**: https://github.com/BobbyW08/BECA-clone/issues
+- **Documentation**: See `docs/` directory in main repository
 
-## 🤝 Contributing
+## License
 
-BECA is part of a larger ecosystem. Issues and suggestions welcome!
+See LICENSE file in the main repository.
 
-## 📄 License
+## Acknowledgments
 
-MIT License - See LICENSE file for details
-
-## 🔗 Related
-
-- **BECA Core**: Main BECA application
-- **BECA Documentation**: Full docs at project README
-- **Ollama**: https://ollama.ai
-
-## 📊 System Requirements
-
-- **VS Code**: 1.85.0 or higher
-- **BECA Backend**: Running instance required
-- **Memory**: 4GB RAM minimum (8GB recommended)
-- **Network**: Connection to BECA API endpoint
-
-## 🆘 Support
-
-For issues:
-1. Check troubleshooting section
-2. Verify BECA backend is running
-3. Check extension logs: View → Output → BECA
-4. Report bugs via issue tracker
-
-## 🎉 Acknowledgments
-
-Built with:
-- VS Code Extension API
-- Axios for HTTP requests
-- Love for coding ❤️
+- Built with the VS Code Extension API
+- Powered by Ollama and deepseek-coder
+- Inspired by Cline and other AI coding assistants
 
 ---
 
-**Made with 🤖 by BECA Team**
-
-Enjoy coding with your AI companion! 🚀
+**Made with ❤️ by the BECA team**
