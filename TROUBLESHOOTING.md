@@ -153,5 +153,3 @@ Once commands are working, we'll address:
 
 If issues persist:
 1. Check DEBUG CONSOLE in Extension Development Host
-2. Look for specific error messages
-3. Share error logs for detailed help

@@ -171,7 +171,15 @@
       "activitybar": [
         {
           "id": "beca-sidebar",
-          "title": "BECA"
+          "title": "BECA",
+          "icon": "$(comment-discussion)"
+        }
+      ],
+      "panel": [
+        {
+          "id": "beca-panel",
+          "title": "BECA",
+          "icon": "$(comment-discussion)"
         }
       ]
     },
@@ -179,15 +187,25 @@
       "beca-sidebar": [
         {
           "id": "beca.chatView",
-          "name": "Chat with BECA"
+          "name": "Chat with BECA",
+          "type": "webview"
         },
         {
           "id": "beca.historyView",
-          "name": "Conversation History"
+          "name": "Conversation History",
+          "type": "webview"
         },
         {
           "id": "beca.insightsView",
-          "name": "Code Insights"
+          "name": "Code Insights",
+          "type": "webview"
+        }
+      ],
+      "beca-panel": [
+        {
+          "id": "beca.chatViewPanel",
+          "name": "Chat with BECA",
+          "type": "webview"
         }
       ]
     }

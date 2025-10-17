@@ -3,7 +3,7 @@ const BecaClient = require('./beca-client');
 const { registerCommands } = require('./commands');
 const { registerProviders } = require('./providers');
 const { StatusBarManager } = require('./views/statusBar');
-const { SidebarProvider } = require('./views/sidebar');
+const { BecaProvider } = require('./views/becaProvider');
 const { FileWatcher } = require('./watchers/fileWatcher');
 const { DebugAssistant } = require('./assistants/debugAssistant');
 const { TerminalIntegration } = require('./terminal/terminalIntegration');
@@ -36,12 +36,21 @@ async function activate(context) {
     const statusBar = new StatusBarManager(becaClient);
     context.subscriptions.push(statusBar);
 
-    // Initialize sidebar views
-    const sidebarProvider = new SidebarProvider(context, becaClient);
+    // Initialize BECA chat provider with Cline-style UI
+    const becaProvider = new BecaProvider(context, becaClient);
+    
+    // Register for both sidebar and panel (secondary sidebar)
     context.subscriptions.push(
-        vscode.window.registerWebviewViewProvider('beca.chatView', sidebarProvider.getChatProvider()),
-        vscode.window.registerWebviewViewProvider('beca.historyView', sidebarProvider.getHistoryProvider()),
-        vscode.window.registerWebviewViewProvider('beca.insightsView', sidebarProvider.getInsightsProvider())
+        vscode.window.registerWebviewViewProvider('beca.chatView', becaProvider, {
+            webviewOptions: {
+                retainContextWhenHidden: true
+            }
+        }),
+        vscode.window.registerWebviewViewProvider('beca.chatViewPanel', becaProvider, {
+            webviewOptions: {
+                retainContextWhenHidden: true
+            }
+        })
     );
 
     // Register all commands
